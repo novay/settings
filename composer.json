@@ -1,5 +1,5 @@
 {
-    "name": "novay/laravel-settings",
+    "name": "novay/settings",
     "description": "Simple yet powerful key-value settings stored in database for Laravel",
     "homepage": "https://github.com/novay/laravel-settings",
     "type": "library",
