@@ -13,11 +13,11 @@ class SettingsServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../migrations/' => database_path('migrations'),
-        ], 'novay-settings-migrations');
+        ], 'settings-migrations');
 
         $this->publishes([
-            __DIR__ . '/../config/settings.php' => config_path('novay-settings.php'),
-        ], 'novay-settings-config');
+            __DIR__ . '/../config/settings.php' => config_path('settings.php'),
+        ], 'settings-config');
 
         // Blade Directive
         Blade::directive('setting', function ($expression) {
@@ -37,7 +37,7 @@ class SettingsServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/config/settings.php', 'novay-settings');
+        $this->mergeConfigFrom(__DIR__ . '/../config/settings.php', 'settings');
 
         $this->app->singleton('Novay\Settings\Setting\SettingStorage', function () {
             return new Setting\SettingEloquentStorage();
