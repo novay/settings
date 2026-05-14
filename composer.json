@@ -1,7 +1,7 @@
 {
     "name": "novay/settings",
     "description": "Simple yet powerful key-value settings stored in database for Laravel",
-    "homepage": "https://github.com/novay/laravel-settings",
+    "homepage": "https://github.com/novay/settings",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -14,8 +14,8 @@
     "authors": [
         {
             "name": "Novay",
-            "email": "hello@novay.dev",
-            "homepage": "https://novay.dev"
+            "email": "novay@btekno.id",
+            "homepage": "https://novay.web.id"
         }
     ],
     "require": {
@@ -49,8 +49,5 @@
                 "Settings": "Novay\\Settings\\Facade"
             }
         }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit"
     }
 }

@@ -5,7 +5,7 @@ Store key-value settings in database with encryption support.
 ## Installation
 
 ```bash
-composer require novay/laravel-settings
+composer require novay/settings
 php artisan migrate
 php artisan vendor:publish --tag=novay-settings-config
 ```
