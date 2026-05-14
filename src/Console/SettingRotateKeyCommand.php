@@ -15,7 +15,7 @@ class SettingRotateKeyCommand extends Command
 
     public function handle()
     {
-        if (!config('novay-settings.encrypt')) {
+        if (!config('settings.encrypt')) {
             $this->warn('Encryption sedang OFF. Tidak ada yang perlu di-rotate.');
             return;
         }
@@ -31,11 +31,11 @@ class SettingRotateKeyCommand extends Command
 
         foreach ($settings as $setting) {
             try {
-                $decrypted = config('novay-settings.driver') === 'kunci'
+                $decrypted = config('settings.driver') === 'kunci'
                     ? Kunci::decrypt($setting->val)
                     : Crypt::decryptString($setting->val);
 
-                $setting->val = config('novay-settings.driver') === 'kunci'
+                $setting->val = config('settings.driver') === 'kunci'
                     ? Kunci::encrypt($decrypted)
                     : Crypt::encryptString($decrypted);
 

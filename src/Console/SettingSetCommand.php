@@ -23,6 +23,6 @@ class SettingSetCommand extends Command
         Facade::group($group)->set($key, $value);
 
         $this->info("✅ Setting '{$key}' berhasil disimpan di group '{$group}'" .
-            (config('novay-settings.encrypt') ? ' (encrypted)' : ''));
+            (config('settings.encrypt') ? ' (encrypted)' : ''));
     }
 }

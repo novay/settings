@@ -27,7 +27,7 @@ class SettingListCommand extends Command
 
         $rows = $settings->map(fn($value, $key) => [
             $key,
-            config('novay-settings.encrypt') ? '********' : (strlen($value) > 60 ? substr($value, 0, 57) . '...' : $value),
+            config('settings.encrypt') ? '********' : (strlen($value) > 60 ? substr($value, 0, 57) . '...' : $value),
         ])->toArray();
 
         $this->table(['Key', 'Value'], $rows);

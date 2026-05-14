@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Crypt;
 class SettingEloquentStorage implements SettingStorage
 {
     protected string $group = 'default';
-    protected string $cacheKey = 'novay_settings';
+    protected string $cacheKey = 'nx_settings';
 
     private function shouldEncrypt(): bool
     {
-        return config('novay-settings.encrypt', false);
+        return config('settings.encrypt', false);
     }
 
     private function encrypt(mixed $value): string
@@ -24,7 +24,7 @@ class SettingEloquentStorage implements SettingStorage
             return $value;
         }
 
-        return config('novay-settings.driver') === 'kunci'
+        return config('settings.driver') === 'kunci'
             ? Kunci::encrypt($value)
             : Crypt::encryptString($value);
     }
@@ -36,7 +36,7 @@ class SettingEloquentStorage implements SettingStorage
         }
 
         try {
-            return config('novay-settings.driver') === 'kunci'
+            return config('settings.driver') === 'kunci'
                 ? Kunci::decrypt($value)
                 : Crypt::decryptString($value);
         } catch (\Exception) {
@@ -47,11 +47,11 @@ class SettingEloquentStorage implements SettingStorage
     public function all(bool $fresh = false): Collection
     {
         if ($fresh) {
-            return $this->modelQuery()->pluck('val', 'name');
+            return collect($this->modelQuery()->pluck('val', 'name'));
         }
 
         return Cache::rememberForever($this->getCacheKey(), function () {
-            return $this->modelQuery()->pluck('val', 'name');
+            return collect($this->modelQuery()->pluck('val', 'name'));
         });
     }
 
