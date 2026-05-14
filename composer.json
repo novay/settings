@@ -1,0 +1,56 @@
+{
+    "name": "novay/laravel-settings",
+    "description": "Simple yet powerful key-value settings stored in database for Laravel",
+    "homepage": "https://github.com/novay/laravel-settings",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "settings",
+        "configuration",
+        "db-settings",
+        "key-value"
+    ],
+    "authors": [
+        {
+            "name": "Novay",
+            "email": "hello@novay.dev",
+            "homepage": "https://novay.dev"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "^8.0 || ^9.0 || ^10.0 || ^11.0 || ^12.0 || ^13.0",
+        "novay/kunci": "^1.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0|^10.0",
+        "phpunit/phpunit": "^9.5|^10.5|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Novay\\Settings\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Novay\\Settings\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Novay\\Settings\\SettingsServiceProvider"
+            ],
+            "aliases": {
+                "Settings": "Novay\\Settings\\Facade"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
